@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.license     = 'GPL-3.0'
   s.authors     = ['Joe Stannard']
   s.email       = ['stannajl@miamioh.edu']
-  s.homepage    = 'https://github.com/rougehero/foreman_custom_tab'
+  s.homepage    = 'https://github.com/MiamiOH/foreman_custom_tab'
   s.summary     = 'creates custom tab for hosts'
   # also update locale/gemspec.rb
   s.description = 'Makes a new tab that has different fields depending on the settings file'
