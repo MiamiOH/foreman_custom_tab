@@ -3,6 +3,6 @@ if SETTINGS[:custom_tab]
                      :virtual_path => "hosts/show",
                      :name => "add_tab_link",
                      :insert_bottom => "ul#myTab",
-                     :text => "  <li><a href=\"#summary\" data-toggle=\"tab\"><%= _('Summary') %></a></li>"
+                     :text => "  <li><a href=\"#custom_tab\" data-toggle=\"tab\"><%= _('custom_tab') %></a></li>"
                      )
 end

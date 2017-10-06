@@ -21,7 +21,7 @@ module ForemanCustomTab
         
         security_block :foreman_custom_tab do
           permission :view_hosts,
-              { :hosts => [:summary] },
+              { :hosts => [:custom_tab] },
               :resource_type => 'Host'
         end
         

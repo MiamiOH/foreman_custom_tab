@@ -3,7 +3,7 @@ module ForemanCustomTab
     extend ActiveSupport::Concern
     
     
-    def summary_fields(host)
+    def custom_tab_fields(host)
       fields = []
       rows = SETTINGS[:custom_tab][:fields] || []
       rows.each do |name, value|

@@ -1,11 +1,11 @@
 <table id="custom_table" class="<%= table_css_classes %>">
   <thead>
     <tr>
-      <th colspan="2"><%= _('Summary') %></th>
+      <th colspan="2"><%= _('custom_tab') %></th>
     </tr>
   </thead>
   <tbody>
-    <% summary_fields(host).each do |name, value| %>
+    <% custom_tab_fields(host).each do |name, value| %>
       <tr>
         <td><%= name %></td>
         <td><%= value %></td>
