@@ -11,9 +11,9 @@ module ForemanCustomTab
     config.autoload_paths += Dir["#{config.root}/app/overrides"]
   
     
-    initializer 'foreman_custom_tab.configure_assets', :group => :assets do
-      SETTINGS[:foreman_custom_tab] = { assets: { precompile: assets_to_precompile } }
-    end
+    #initializer 'foreman_custom_tab.configure_assets', :group => :assets do
+      #SETTINGS[:foreman_custom_tab] = { assets: { precompile: assets_to_precompile } }
+    #end
     
     initializer('foreman_custom_tab.register_plugin', :before => :finisher_hook) do
       Foreman::Plugin.register :foreman_custom_tab do
