@@ -2,7 +2,6 @@ module ForemanCustomTab
   module HostsHelperExtensions
     extend ActiveSupport::Concern
     
-    
     def custom_tab_fields(host)
       fields = []
       rows = SETTINGS[:custom_tab][:fields] || []

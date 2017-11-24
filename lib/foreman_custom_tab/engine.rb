@@ -24,9 +24,6 @@ module ForemanCustomTab
               { :hosts => [:custom_tab] },
               :resource_type => 'Host'
         end
-        
-        
-        
       end
     end
     

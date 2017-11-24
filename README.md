@@ -20,12 +20,18 @@ a new file named 'foreman_custom_tab.yaml' at the location /etc/foreman/plugins/
 
 The format for your yaml file should look like the following:
 
-	---
-	  :custom_tab:
-	    :fields:
-	      IP Address, ip
-	      MAC Address, mac
-	      OS: operatingsystem.to_label
+```
+:custom_tab:
+  :fields:
+      'IP Address': xxx.xxx.xx.xx
+      'MAC Address': xx:xx:xx:xx:xx:xx
+      'OS': '<OS Name>'	  
+```
+
+## Verify the Custom Tab is loaded
+Navigate to /hosts/, click on one of the listed host. There should be tabs: 'Properties', 'Metrics', 'Templates', 'NICs' and 'Custom Tab'
+
+If you don't see a 'Custom Tab', add the custom_tab config to <foreman_repo>/config/settings.yaml
 
 ##TODO
 
