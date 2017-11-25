@@ -15,6 +15,10 @@ module ForemanCustomTab
       end
       fields
     end
+
+    def custom_tab_title
+      SETTINGS[:custom_tab][:title] || 'Custom Tab'
+    end
     
   end
 end
