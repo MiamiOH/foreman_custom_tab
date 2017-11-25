@@ -18,18 +18,19 @@ If there is no configuration file then the tab should not appear on the detailed
 there is one and it is empty then it will appear without any fields. To setup the configuration file create
 a new file named 'foreman_custom_tab.yaml' at the location /etc/foreman/plugins/
 
-The format for your yaml file should look like the following. Attribute names could be space separated, snake case, i.e any valid yaml token.
-
-Note: These are actual attributes of a foreman host and would be fetched dynamically.
+All key/value should be a valid yaml token. Fields value are actual host attributes to be fetched dynamically.
+Example configuration:
 
 ```
 :custom_tab:
   :fields:
-    :name
-    :type
-    'MAC Address'
-    'IP Address'
-    :OS
+    'Host Name': name
+    'MAC Address': mac
+    'IP Address': ip
+    'Architecture': arch
+    'Certificate Name': certname
+    'OS Title': operatingsystem.title
+    'OS Type': operatingsystem.type
 ```
 
 ## Verify the Custom Tab is loaded
