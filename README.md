@@ -18,7 +18,8 @@ If there is no configuration file then the tab should not appear on the detailed
 there is one and it is empty then it will appear without any fields. To setup the configuration file create
 a new file named 'foreman_custom_tab.yaml' at the location /etc/foreman/plugins/
 
-All key/value should be a valid yaml token. Fields value are actual host attributes to be fetched dynamically.
+The keys are the display title and the values are the methods that are actually called to produce the value.
+
 Example configuration:
 
 ```
@@ -31,16 +32,20 @@ Example configuration:
     'Certificate Name': certname
     'OS Title': operatingsystem.title
     'OS Type': operatingsystem.type
+  :title: foo
 ```
 
 ## Verify the Custom Tab is loaded
-Navigate to /hosts/, click on one of the listed host. There should be tabs: 'Properties', 'Metrics', 'Templates', 'NICs' and 'Custom Tab'
+Navigate to /hosts/, click on one of the listed host. There should be tabs: 'Properties', 'Metrics', 'Templates', 'NICs' and 'Custom Tab or custom_tab.title'
 
-If you don't see a 'Custom Tab', add the custom_tab config to <foreman_repo>/config/settings.yaml
+## Development mode
+Add the custom_tab config to <foreman_repo>/config/settings.yaml
 
-##TODO
+Note: foreman running locally (i.e not installed via rpm/debian package) does not use settings from /etc/foreman/plugins/
 
-*add plugin settings file
+## TODO
+
+* add plugin settings file
 
 ## Notes
 
