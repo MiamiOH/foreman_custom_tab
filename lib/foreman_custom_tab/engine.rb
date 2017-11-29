@@ -9,10 +9,6 @@ module ForemanCustomTab
     config.autoload_paths += Dir["#{config.root}/app/helpers/concerns"]
     config.autoload_paths += Dir["#{config.root}/app/models/concerns"]
     config.autoload_paths += Dir["#{config.root}/app/overrides"]
-  
-    #initializer 'foreman_custom_tab.configure_assets', :group => :assets do
-      #SETTINGS[:foreman_custom_tab] = { assets: { precompile: assets_to_precompile } }
-    #end
     
     # requires_foreman version as per
     # http://projects.theforeman.org/projects/foreman/wiki/How_to_Create_a_Plugin#Requiring-Foreman-version
