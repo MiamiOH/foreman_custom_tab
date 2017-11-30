@@ -3,20 +3,20 @@ module ForemanCustomTab
   module HostsControllerExtensions
     extend ActiveSupport::Concern
 
-    def summary
+    def custom_tab
       # We can't add a before_filter :find_resource for Cockpit actions as
       # it'll override the default find_resource filter.
       find_resource
-      render :partial => 'foreman_custom_tab/hosts/summary', :locals => { :host => @host }
+      render :partial => 'foreman_custom_tab/hosts/custom_tab', :locals => { :host => @host }
     rescue ActionView::Template::Error => exception
-      process_ajax_error exception, 'fetch summary information'
+      process_ajax_error exception, 'fetch custom tab information'
     end
     
     private
     
     def action_permission
       case params[:action]
-      when 'summary'
+      when 'custom_tab'
         :view
       else
         super

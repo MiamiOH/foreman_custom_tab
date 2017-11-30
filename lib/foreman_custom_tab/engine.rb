@@ -9,29 +9,28 @@ module ForemanCustomTab
     config.autoload_paths += Dir["#{config.root}/app/helpers/concerns"]
     config.autoload_paths += Dir["#{config.root}/app/models/concerns"]
     config.autoload_paths += Dir["#{config.root}/app/overrides"]
-  
     
-    initializer 'foreman_custom_tab.configure_assets', :group => :assets do
-      SETTINGS[:foreman_custom_tab] = { assets: { precompile: assets_to_precompile } }
-    end
-    
+    # requires_foreman version as per
+    # http://projects.theforeman.org/projects/foreman/wiki/How_to_Create_a_Plugin#Requiring-Foreman-version
+
+    # Adding permission to controller action
+    # http://projects.theforeman.org/projects/foreman/wiki/How_to_Create_a_Plugin#Adding-permission
     initializer('foreman_custom_tab.register_plugin', :before => :finisher_hook) do
       Foreman::Plugin.register :foreman_custom_tab do
         requires_foreman '>= 1.7'
         
         security_block :foreman_custom_tab do
           permission :view_hosts,
-              { :hosts => [:summary] },
+              { :hosts => [:custom_tab] },
               :resource_type => 'Host'
         end
-        
-        
-        
       end
     end
     
     
+    # Extending a controller
     # Include concerns in this config.to_prepare block
+    # http://projects.theforeman.org/projects/foreman/wiki/How_to_Create_a_Plugin#Extending-a-Controller
     config.to_prepare do
       begin
         HostsHelper.send(:include, ForemanCustomTab::HostsHelperExtensions)
