@@ -17,13 +17,12 @@ module ForemanCustomTab
     # http://projects.theforeman.org/projects/foreman/wiki/How_to_Create_a_Plugin#Adding-permission
     initializer('foreman_custom_tab.register_plugin', :before => :finisher_hook) do
       Foreman::Plugin.register :foreman_custom_tab do
-        requires_foreman '>= 1.8'
+        requires_foreman '>= 1.7'
         
         security_block :foreman_custom_tab do
           permission :view_hosts,
-              { 
-                :controller_name => [:show]
-              }
+              { :hosts => [:custom_tab] },
+              :resource_type => 'Host'
         end
       end
     end
