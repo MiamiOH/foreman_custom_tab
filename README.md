@@ -32,11 +32,10 @@ Example configuration:
     'Certificate Name': certname
     'OS Title': operatingsystem.title
     'OS Type': operatingsystem.type
-  :title: foo
 ```
 
 ## Verify the Custom Tab is loaded
-Navigate to /hosts/, click on one of the listed host. There should be tabs: 'Properties', 'Metrics', 'Templates', 'NICs' and 'Custom Tab or custom_tab.title'
+Navigate to /hosts/, click on one of the listed host. There should be tabs: 'Properties', 'Metrics', 'Templates', 'NICs' and 'Custom Tab'
 
 ## Development mode
 Add the custom_tab config to <foreman_repo>/config/settings.yaml
