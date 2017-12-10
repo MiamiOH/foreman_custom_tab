@@ -1,0 +1,11 @@
+:custom_tab:
+  :fields:
+    'Host Name': name
+    'MAC Address': mac
+    'IP Address': ip
+    'Architecture': arch
+    'Certificate Name': certname
+    'OS Title': operatingsystem.title
+    'OS Type': operatingsystem.type
+  :title: foo
+
