@@ -6,7 +6,7 @@ namespace :test do
     t.libs << ['test', test_dir]
     t.pattern = "#{test_dir}/**/*_test.rb"
     t.verbose = true
-    t.warning = false    
+    t.warning = false
   end
 end
 
@@ -19,8 +19,8 @@ namespace :foreman_custom_tab do
                          "#{ForemanCustomTab::Engine.root}/lib/**/*.rb",
                          "#{ForemanCustomTab::Engine.root}/test/**/*.rb"]
       end
-    rescue
-      puts 'Rubocop not loaded.'
+    rescue StandardError => e
+      puts "Rubocop not loaded #{e.message}"
     end
 
     Rake::Task['rubocop_foreman_custom_tab'].invoke
