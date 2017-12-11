@@ -9,7 +9,7 @@ module ForemanCustomTab
     config.autoload_paths += Dir["#{config.root}/app/helpers/concerns"]
     config.autoload_paths += Dir["#{config.root}/app/models/concerns"]
     config.autoload_paths += Dir["#{config.root}/app/overrides"]
-    
+
     # requires_foreman version as per
     # http://projects.theforeman.org/projects/foreman/wiki/How_to_Create_a_Plugin#Requiring-Foreman-version
 
@@ -18,16 +18,15 @@ module ForemanCustomTab
     initializer('foreman_custom_tab.register_plugin', :before => :finisher_hook) do
       Foreman::Plugin.register :foreman_custom_tab do
         requires_foreman '>= 1.7'
-        
+
         security_block :foreman_custom_tab do
           permission :view_hosts,
-              { :hosts => [:custom_tab] },
-              :resource_type => 'Host'
+                     { :hosts => [:custom_tab] },
+                     :resource_type => 'Host'
         end
       end
     end
-    
-    
+
     # Extending a controller
     # Include concerns in this config.to_prepare block
     # http://projects.theforeman.org/projects/foreman/wiki/How_to_Create_a_Plugin#Extending-a-Controller
@@ -36,7 +35,7 @@ module ForemanCustomTab
         HostsHelper.send(:include, ForemanCustomTab::HostsHelperExtensions)
         ::HostsController.send(:include,
                                ForemanCustomTab::HostsControllerExtensions)
-      rescue => e
+      rescue StandardError => e
         Rails.logger.warn "ForemanCustomTab: skipping engine hook (#{e})"
       end
     end

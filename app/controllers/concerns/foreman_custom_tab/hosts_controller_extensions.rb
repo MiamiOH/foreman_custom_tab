@@ -11,9 +11,9 @@ module ForemanCustomTab
     rescue ActionView::Template::Error => exception
       process_ajax_error exception, 'fetch custom tab information'
     end
-    
+
     private
-    
+
     def action_permission
       case params[:action]
       when 'custom_tab'

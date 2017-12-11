@@ -1,8 +1,8 @@
 module ForemanCustomTab
   module HostsHelperExtensions
     extend ActiveSupport::Concern
-    
-    def custom_tab_fields(host)      
+
+    def custom_tab_fields(host)
       fields = []
       config_fields = SETTINGS[:custom_tab][:fields] || []
       config_fields.each do |key, value|
@@ -19,6 +19,5 @@ module ForemanCustomTab
     def custom_tab_title
       SETTINGS[:custom_tab][:title] || 'Custom Tab'
     end
-    
   end
 end
