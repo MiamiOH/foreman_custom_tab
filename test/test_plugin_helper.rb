@@ -1,3 +1,14 @@
+# populate custom tab settings for test env
+# NOTE: this needs to be updated before calling foreman test_helper
+SETTINGS[:custom_tab] = { fields: { 'Host Name' => 'name',
+                                    'MAC Address' => 'mac',
+                                    'IP Address' => 'ip',
+                                    'Architecture' => 'arch',
+                                    'Certificate Name' => 'certname',
+                                    'OS Title' => 'operatingsystem.title',
+                                    'OS Type' => 'operatingsystem.type' },
+                          title: 'foo' }
+
 # This calls the main test_helper in Foreman-core
 require 'test_helper'
 
