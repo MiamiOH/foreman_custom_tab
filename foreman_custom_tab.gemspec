@@ -3,13 +3,14 @@ require File.expand_path('../lib/foreman_custom_tab/version', __FILE__)
 Gem::Specification.new do |s|
   s.name        = 'foreman_custom_tab'
   s.version     = ForemanCustomTab::VERSION
+  s.date        = Date.today.to_s
   s.license     = 'GPL-3.0'
   s.authors     = ['Joe Stannard']
   s.email       = ['stannajl@miamioh.edu']
   s.homepage    = 'https://github.com/MiamiOH/foreman_custom_tab'
-  s.summary     = 'creates custom tab for hosts'
+  s.summary     = 'Creates custom tab for hosts in Foreman'
   # also update locale/gemspec.rb
-  s.description = 'Makes a new tab that has different fields depending on the settings file'
+  s.description = 'Foreman Plugin that makes a new tab with different fields depending on the settings file'
 
   s.files = Dir['{app,config,db,lib,locale}/**/*'] + ['LICENSE', 'Rakefile', 'README.md']
   s.test_files = Dir['test/**/*']
