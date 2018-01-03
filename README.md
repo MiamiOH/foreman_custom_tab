@@ -14,7 +14,7 @@ bundle update foreman_custom_tab
 
 ## Configuration
 
-If there is no configuration file then the tab should not appear on the detailed hosts screen, but if 
+If there is no configuration file then the tab should not appear on the detailed hosts screen, but if
 there is one and it is empty then it will appear without any fields. To setup the configuration file create
 a new file named 'foreman_custom_tab.yaml' at the location /etc/foreman/plugins/
 
@@ -23,16 +23,19 @@ The keys are the display title and the values are the methods that are actually 
 Example configuration:
 
 ```
+---
 :custom_tab:
-  :fields:
-    'Host Name': name
-    'MAC Address': mac
-    'IP Address': ip
-    'Architecture': arch
-    'Certificate Name': certname
-    'OS Title': operatingsystem.title
-    'OS Type': operatingsystem.type
   :title: foo
+  :fields:
+    Host Name: name
+    MAC Address: mac
+    IP Address: ip
+    Architecture: arch
+    Certificate Name: certname
+    OS Title: operatingsystem.title
+    OS Type: operatingsystem.type
+    Puppet Version: facts[puppetversion]
+    Ruby Version: facts.fetch(rubyversion)
 ```
 
 ## Verify the Custom Tab is loaded
@@ -49,7 +52,7 @@ Note: foreman running locally (i.e not installed via rpm/debian package) does no
 
 ## Notes
 
-This project is still incomplete and in development. 
+This project is still incomplete and in development.
 
 Copyright (c) 2017 Joe Lyons Stannard III
 
@@ -65,4 +68,3 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
-

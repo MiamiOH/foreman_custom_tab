@@ -6,7 +6,8 @@ SETTINGS[:custom_tab] = { fields: { 'Host Name' => 'name',
                                     'Architecture' => 'arch',
                                     'Certificate Name' => 'certname',
                                     'OS Title' => 'operatingsystem.title',
-                                    'OS Type' => 'operatingsystem.type' },
+                                    'OS Type' => 'operatingsystem.type',
+                                    'Puppet Version' => 'facts[puppetversion]' },
                           title: 'foo' }
 
 # This calls the main test_helper in Foreman-core
