@@ -6,10 +6,15 @@ module ForemanCustomTab
       fields = []
       config_fields = SETTINGS[:custom_tab][:fields] || []
       config_fields.each do |key, value|
-        host_attr_val = nil
         # chain the method calls for attibutes like operatingsystem.title
-        value.split('.').each_with_index do |method, index|
-          host_attr_val = index.eql?(0) ? host.try(method) : host_attr_val.try(method)
+        host_attr_val = value.split('.').inject(host) do |memo, method|
+          if m = method.match(/(.*)\((.*)\)/)
+            memo.try(*[m[1], *m[2].split(/,\s?/)])
+          elsif m = method.match(/(.*)\[(.*)\]/)
+            memo.try(m[1]).try('[]', m[2])
+          else
+            memo.try(method)
+          end
         end
         fields += [[_(key.to_s), host_attr_val]] if host_attr_val.present?
       end
