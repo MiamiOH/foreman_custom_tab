@@ -20,9 +20,12 @@ module ForemanCustomTab
         requires_foreman '>= 1.7'
 
         security_block :foreman_custom_tab do
-          permission :view_hosts,
-                     { :hosts => [:custom_tab] },
-                     :resource_type => 'Host'
+          ps = permission :view_hosts,
+                          { :hosts => [:custom_tab] },
+                          :resource_type => 'Host'
+          pn = ps.pop
+          po = ps.detect {|p| p.name == :view_hosts}
+          po.actions << pn.actions.first
         end
       end
     end

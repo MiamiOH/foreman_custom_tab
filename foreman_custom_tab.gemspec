@@ -1,4 +1,5 @@
 require File.expand_path('../lib/foreman_custom_tab/version', __FILE__)
+require 'date'
 
 Gem::Specification.new do |s|
   s.name        = 'foreman_custom_tab'
