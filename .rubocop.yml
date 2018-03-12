@@ -12,6 +12,10 @@ Rails/ActionFilter:
 Metrics/MethodLength:
   Max: 20
 
+Metrics/AbcSize:
+  # Ruduce this... Max: 15
+  Max: 22
+
 Metrics/LineLength:
   Max: 111 # TODO: discuss and set this
 
