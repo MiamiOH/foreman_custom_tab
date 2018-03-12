@@ -24,7 +24,7 @@ module ForemanCustomTab
                           { :hosts => [:custom_tab] },
                           :resource_type => 'Host'
           pn = ps.pop
-          po = ps.detect {|p| p.name == :view_hosts}
+          po = ps.detect { |p| p.name == :view_hosts }
           po.actions << pn.actions.first
         end
       end
@@ -44,7 +44,7 @@ module ForemanCustomTab
     end
 
     initializer 'foreman_custom_tab.register_gettext', after: :load_config_initializers do |_app|
-      locale_dir = File.join(File.expand_path('../../..', __FILE__), 'locale')
+      locale_dir = File.join(File.expand_path('../..', __dir__), 'locale')
       locale_domain = 'foreman_custom_tab'
       Foreman::Gettext::Support.add_text_domain locale_domain, locale_dir
     end

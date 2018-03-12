@@ -8,9 +8,9 @@ module ForemanCustomTab
       config_fields.each do |key, value|
         # chain the method calls for attibutes like operatingsystem.title
         host_attr_val = value.split('.').inject(host) do |memo, method|
-          if m = method.match(/(.*)\((.*)\)/)
-            memo.try(*[m[1], *m[2].split(/,\s?/)])
-          elsif m = method.match(/(.*)\[(.*)\]/)
+          if (m = method.match(/(.*)\((.*)\)/))
+            memo.try(m[1], *m[2].split(/,\s?/))
+          elsif (m = method.match(/(.*)\[(.*)\]/))
             memo.try(m[1]).try('[]', m[2])
           else
             memo.try(method)

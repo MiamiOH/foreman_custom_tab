@@ -1,10 +1,10 @@
-require File.expand_path('../lib/foreman_custom_tab/version', __FILE__)
+require File.expand_path('lib/foreman_custom_tab/version', __dir__)
 require 'date'
 
 Gem::Specification.new do |s|
   s.name        = 'foreman_custom_tab'
   s.version     = ForemanCustomTab::VERSION
-  s.date        = Date.today.to_s
+  s.date        = Date.today.to_s # rubocop:disable Rails/Date
   s.license     = 'GPL-3.0'
   s.authors     = ['Joe Stannard']
   s.email       = ['stannajl@miamioh.edu']
