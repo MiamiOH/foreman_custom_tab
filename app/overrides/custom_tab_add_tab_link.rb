@@ -1,6 +1,6 @@
 if SETTINGS[:custom_tab]
   Deface::Override.new(:virtual_path => 'hosts/show',
-                       :name => 'create_link',
+                       :name => 'custom_tab_add_tab_link',
                        :insert_bottom => 'div#myTabContent',
                        :text =>
                        "\n  <div id='custom_tab' class='tab-pane'
