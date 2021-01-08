@@ -8,8 +8,8 @@ module ForemanCustomTab
       # it'll override the default find_resource filter.
       find_resource
       render :partial => 'foreman_custom_tab/hosts/custom_tab', :locals => { :host => @host }
-    rescue ActionView::Template::Error => exception
-      process_ajax_error exception, 'fetch custom tab information'
+    rescue ActionView::Template::Error => e
+      process_ajax_error e, 'fetch custom tab information'
     end
 
     private

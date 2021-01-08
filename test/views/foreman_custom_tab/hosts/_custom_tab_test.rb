@@ -8,7 +8,7 @@ class CustomTabTest < ActionView::TestCase
   # rubocop:enable Metrics/LineLength
   let(:custom_tab_title) { SETTINGS[:custom_tab][:title] }
 
-  class FakeHostsController < ActionController::Base
+  class FakeHostsController < ApplicationController
     include ForemanCustomTab::HostsHelperExtensions
     include LayoutHelper
 

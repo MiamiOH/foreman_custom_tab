@@ -9,19 +9,19 @@ class HostsControllerTest < ActionController::TestCase
   # rubocop:enable Metrics/LineLength
   let(:custom_tab_title) { SETTINGS[:custom_tab][:title] }
 
-  # rubocop:disable Metrics/LineLength, Style/StringLiterals, HttpPositionalArguments
+  # rubocop:disable Metrics/LineLength, Style/StringLiterals, Rails/HttpPositionalArguments
   test 'GET hosts/:id displays tabs' do
     get :show, { :id => host.id }, set_session_user
     assert_includes response.headers['Content-Type'], 'text/html'
     assert_equal response.status, 200
-    assert_includes response.body, "ul id=\"myTab\""
+    assert_includes response.body, "ul id=\"host-show-tabs\""
   end
 
   test "host overview displays tabs 'Properties', 'Metrics', 'NICs'" do
     get :show, { :id => host.id }, set_session_user
     assert_includes response.headers['Content-Type'], 'text/html'
     assert_equal response.status, 200
-    assert_includes response.body, "<ul id=\"myTab\""
+    assert_includes response.body, "<ul id=\"host-show-tabs\""
     assert_includes response.body, "<li class=\"active\"><a href=\"#properties\" data-toggle=\"tab\">Properties</a></li>"
     assert_includes response.body, "<li><a href=\"#metrics\" data-toggle=\"tab\">Metrics</a></li>"
     assert_includes response.body, "<li><a href=\"#nics\" data-toggle=\"tab\">NICs</a></li>"
@@ -30,7 +30,7 @@ class HostsControllerTest < ActionController::TestCase
   test "host overview displays the Custom Tab" do
     get :show, { :id => host.id }, set_session_user
     assert_includes response.headers['Content-Type'], 'text/html'
-    assert_includes response.body, "<ul id=\"myTab\""
+    assert_includes response.body, "<ul id=\"host-show-tabs\""
     assert_equal response.status, 200
     assert_includes response.body, "<li><a href=\"#custom_tab\" data-toggle=\"tab\">#{custom_tab_title}</a></li>"
   end
@@ -40,7 +40,7 @@ class HostsControllerTest < ActionController::TestCase
 
     assert_equal response.status, 200
     assert_includes response.headers['Content-Type'], 'text/html'
-    assert_includes response.body, "<ul id=\"myTab\""
+    assert_includes response.body, "<ul id=\"host-show-tabs\""
     assert_includes response.body, "<li><a href=\"#custom_tab\" data-toggle=\"tab\">#{custom_tab_title}</a></li>"
     assert_includes response.body, "<div id=\"custom_tab\" class=\"tab-pane\" data-ajax-url=\"/hosts/#{host.name}/custom_tab\" data-on-complete=\"onContentLoad\">"
   end
@@ -70,5 +70,5 @@ class HostsControllerTest < ActionController::TestCase
       end
     end
   end
-  # rubocop:enable Metrics/LineLength, Style/StringLiterals, HttpPositionalArguments
+  # rubocop:enable Metrics/LineLength, Style/StringLiterals, Rails/HttpPositionalArguments
 end
