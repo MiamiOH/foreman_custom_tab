@@ -4,12 +4,12 @@ class HostsControllerTest < ActionController::TestCase
   let(:os) { FactoryBot.create(:operatingsystem, name: 'CentOS', major: '7', type: 'Redhat') }
   let(:arch) { FactoryBot.create(:architecture) }
   let(:host_id) { 'foreman.example.com' }
-  # rubocop:disable Metrics/LineLength
+  # rubocop:disable Layout/LineLength
   let(:host) { FactoryBot.create(:host, id: host_id, mac: '00:00:00:00:00:00', ip: '127.0.0.1', operatingsystem: os, arch: arch) }
-  # rubocop:enable Metrics/LineLength
+  # rubocop:enable Layout/LineLength
   let(:custom_tab_title) { SETTINGS[:custom_tab][:title] }
 
-  # rubocop:disable Metrics/LineLength, Style/StringLiterals, Rails/HttpPositionalArguments
+  # rubocop:disable Layout/LineLength, Style/StringLiterals, Rails/HttpPositionalArguments
   test 'GET hosts/:id displays tabs' do
     get :show, { :id => host.id }, set_session_user
     assert_includes response.headers['Content-Type'], 'text/html'
@@ -70,5 +70,5 @@ class HostsControllerTest < ActionController::TestCase
       end
     end
   end
-  # rubocop:enable Metrics/LineLength, Style/StringLiterals, Rails/HttpPositionalArguments
+  # rubocop:enable Layout/LineLength, Style/StringLiterals, Rails/HttpPositionalArguments
 end

@@ -5,9 +5,9 @@ class HostsHelperExtensionsTest < ActiveSupport::TestCase
 
   let(:os) { FactoryBot.create(:operatingsystem, name: 'CentOS', major: '7', type: 'Redhat') }
   let(:arch) { FactoryBot.create(:architecture) }
-  # rubocop:disable Metrics/LineLength
+  # rubocop:disable Layout/LineLength
   let(:host) { FactoryBot.create(:host, id: 'foreman.example.com', mac: '00:00:00:00:00:00', ip: '127.0.0.1', operatingsystem: os, arch: arch) }
-  # rubocop:enable Metrics/LineLength
+  # rubocop:enable Layout/LineLength
   let(:expected_fields) do
     fields = []
     SETTINGS[:custom_tab][:fields].each do |title, host_attr|
