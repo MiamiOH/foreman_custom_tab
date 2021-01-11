@@ -17,7 +17,7 @@ module ForemanCustomTab
     # http://projects.theforeman.org/projects/foreman/wiki/How_to_Create_a_Plugin#Adding-permission
     initializer('foreman_custom_tab.register_plugin', :before => :finisher_hook) do
       Foreman::Plugin.register :foreman_custom_tab do
-        requires_foreman '>= 1.7'
+        requires_foreman '>= 2.3'
 
         security_block :foreman_custom_tab do
           permission :view_custom_tab,
@@ -31,13 +31,10 @@ module ForemanCustomTab
     # Include concerns in this config.to_prepare block
     # http://projects.theforeman.org/projects/foreman/wiki/How_to_Create_a_Plugin#Extending-a-Controller
     config.to_prepare do
-      begin
-        HostsHelper.send(:include, ForemanCustomTab::HostsHelperExtensions)
-        ::HostsController.send(:include,
-                               ForemanCustomTab::HostsControllerExtensions)
-      rescue StandardError => e
-        Rails.logger.warn "ForemanCustomTab: skipping engine hook (#{e})"
-      end
+      HostsHelper.include ForemanCustomTab::HostsHelperExtensions
+      ::HostsController.include ForemanCustomTab::HostsControllerExtensions
+    rescue StandardError => e
+      Rails.logger.warn "ForemanCustomTab: skipping engine hook (#{e})"
     end
 
     initializer 'foreman_custom_tab.register_gettext', after: :load_config_initializers do |_app|
